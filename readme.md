@@ -19,14 +19,33 @@ The purpose of the project is to provides a RESTful API to interact with the tra
 For full API document please checkout [this section](https://github.com/trsmarc/eth-parser/tree/main/apidoc)
 
 ## Live DEMO
-API server was deployed to GCP Cloud Run, you can access it via this [link](#live-demo)
+API server was deployed to GCP Cloud Run, you can try the following commands to interact with the service
 
-- Subscribe to an address 
+- Subscribe to an address
+```bash
+curl --location 'https://eth-parser-ywc6sv7cza-uc.a.run.app/subscribe' \
+--header 'Content-Type: application/json' \
+--data '{
+    "address": "0x95222290DD7278Aa3Ddd389Cc1E1d165CC4BAfe5"
+}'
+```
+
 - List collected transactions of an address
-- Get current fetched block number
-- List all addresses that have been subscribed
+```bash
+curl --location 'https://eth-parser-ywc6sv7cza-uc.a.run.app/transactions?address=0x95222290DD7278Aa3Ddd389Cc1E1d165CC4BAfe5'
+```
 
-*Note* The live demo is using concurrency limit of 10, batch size of 50 to prevent the service from being rate limited by the blockchain provider. Please try running locally with different configuration for better performance.
+- Get current fetched block number
+``` bash
+curl --location 'https://eth-parser-ywc6sv7cza-uc.a.run.app/block'
+```
+
+- List all addresses that have been subscribed
+```bash
+curl --location 'https://eth-parser-ywc6sv7cza-uc.a.run.app/subscriber'
+```
+
+*Note* The live demo is using concurrency limit of 10, batch size of 50 to avoid the service from being rate limited by the RPC provider. Try running locally with different configuration for better performance.
 
 ## Local development
 
