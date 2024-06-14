@@ -169,16 +169,14 @@ func (suite *ServerTestSuite) TestGetSubscribedAddress() {
 func (suite *ServerTestSuite) TestGetTransactions() {
 	tests := []struct {
 		description   string
-		requestBody   GetTransactionRequest
+		requestParam  string
 		mockFunc      func()
 		expectedBody  string
 		expectedError bool
 	}{
 		{
-			description: "Successful get transactions",
-			requestBody: GetTransactionRequest{
-				Address: "0x123",
-			},
+			description:  "Successful get transactions",
+			requestParam: "address=0x123",
 			mockFunc: func() {
 				suite.txStore.EXPECT().List("0x123").Return([]common.Transaction{
 					{
@@ -200,11 +198,8 @@ func (suite *ServerTestSuite) TestGetTransactions() {
 
 		test.mockFunc()
 
-		path := "/transactions"
-		jsonData, err := json.Marshal(&test.requestBody)
-		suite.NoError(err)
-
-		req, _ := http.NewRequest(http.MethodGet, ts.URL+path, bytes.NewBuffer(jsonData))
+		path := "/transactions?" + test.requestParam
+		req, _ := http.NewRequest(http.MethodGet, ts.URL+path, nil)
 		req.Header.Set("Content-Type", "application/json")
 
 		resp, err := http.DefaultClient.Do(req)

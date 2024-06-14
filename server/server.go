@@ -66,20 +66,10 @@ func (s *Server) getCurrentBlock(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) getTransactions(w http.ResponseWriter, r *http.Request) {
-	body, err := io.ReadAll(r.Body)
-	if err != nil {
-		http.Error(w, "Error reading request body", http.StatusBadRequest)
-		return
-	}
+	queryValues := r.URL.Query()
+	address := queryValues.Get("address")
 
-	var req GetTransactionRequest
-	err = json.Unmarshal(body, &req)
-	if err != nil {
-		http.Error(w, "Error parsing JSON", http.StatusBadRequest)
-		return
-	}
-
-	txs, err := s.txStore.List(req.Address)
+	txs, err := s.txStore.List(address)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return

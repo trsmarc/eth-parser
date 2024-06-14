@@ -5,7 +5,7 @@
   - [Table of Contents](#table-of-contents)
   - [About the project](#about-the-project)
   - [API documentation](#api-documentation)
-  - [Live Demo](#live-demo)
+  - [Live DEMO](#live-demo)
   - [Local development](#local-development)
     - [Running from source](#running-from-source)
       - [Prerequisites](#prerequisites)
@@ -16,10 +16,9 @@
 The purpose of the project is to provides a RESTful API to interact with the transaction on the network by iterate through Ethereum blocks and transactions, store parsed transaction for subscribed addresses into the in-memory store.
 
 ## API documentation
-****
-For full API document please checkout [this section](#api-documentation)
+For full API document please checkout [this section](https://github.com/trsmarc/eth-parser/tree/main/apidoc)
 
-## Live Demo
+## Live DEMO
 API server was deployed to GCP Cloud Run, you can access it via this [link](#live-demo)
 
 - Subscribe to an address 
