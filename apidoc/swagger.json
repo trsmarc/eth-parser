@@ -1,0 +1,98 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {},
+        "title": "eth-parser",
+        "version": "1.0.0"
+    },
+    "basePath": "localhost",
+    "paths": {
+        "/block": {
+            "get": {
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "description": "Latest Block",
+                "operationId": "latestBlock",
+                "summary": "Latest Block"
+            }
+        },
+        "/subscribe": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "properties": {
+                                "address": {
+                                    "example": "0x95222290DD7278Aa3Ddd389Cc1E1d165CC4BAfe5",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "description": "Subscribe",
+                "operationId": "subscribe",
+                "summary": "Subscribe"
+            }
+        },
+        "/subscriber": {
+            "get": {
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "description": "Subscriber",
+                "operationId": "subscriber",
+                "summary": "Subscriber"
+            }
+        },
+        "/transactions": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "schema": {
+                            "properties": {
+                                "address": {
+                                    "example": "0x95222290DD7278Aa3Ddd389Cc1E1d165CC4BAfe5",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "description": "Transactions",
+                "operationId": "transactions",
+                "summary": "Transactions"
+            }
+        }
+    },
+    "tags": []
+}
